@@ -290,18 +290,26 @@
         });
 
     function populateFilters() {
-        // Filter out headers from filter lists too
-        const dos = [...new Set(rawData.onboarding
-            .filter(item => item.store !== 'Store #' && item.doName !== 'DO')
-            .map(item => item.doName)
-        )].sort();
+        // combine DOs from both lists
+        const allDos = [
+            ...rawData.onboarding.map(i => i.doName),
+            ...rawData.interviews.map(i => i.doName)
+        ];
+        // Filter out header text and empties
+        const dos = [...new Set(allDos.filter(d => d && d !== 'DO'))].sort();
 
-        const stores = [...new Set(rawData.onboarding
-            .filter(item => item.store !== 'Store #')
-            .map(item => item.store)
-        )].sort();
+        // combine Stores from both lists
+        const allStores = [
+            ...rawData.onboarding.map(i => i.store),
+            ...rawData.interviews.map(i => i.store)
+        ];
+        // Filter out header text and empties
+        const stores = [...new Set(allStores.filter(s => s && s !== 'Store #'))].sort();
 
         const doSelect = document.getElementById('doFilter');
+        // Clear existing options except 'All'
+        doSelect.innerHTML = '<option value="All">All DOs</option>';
+        
         dos.forEach(doName => {
             if(doName) {
                 let opt = document.createElement('option');
@@ -310,6 +318,23 @@
                 doSelect.appendChild(opt);
             }
         });
+
+        const storeSelect = document.getElementById('storeFilter');
+        // Clear existing options except 'All'
+        storeSelect.innerHTML = '<option value="All">All Stores</option>';
+        
+        stores.forEach(store => {
+            if(store) {
+                let opt = document.createElement('option');
+                opt.value = store;
+                opt.innerText = store;
+                storeSelect.appendChild(opt);
+            }
+        });
+
+        // Re-attach listeners (safe to do because we didn't replace the select element itself, just options)
+        // Actually, listeners are on the element, so they persist. No need to re-add.
+    }
 
         const storeSelect = document.getElementById('storeFilter');
         stores.forEach(store => {
@@ -436,6 +461,7 @@
 
 </body>
 </html>
+
 
 
 
