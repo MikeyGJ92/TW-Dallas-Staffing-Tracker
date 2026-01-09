@@ -352,11 +352,6 @@
         filtered.forEach(item => {
             const icon = (item.position.includes('DE')) ? '🚗' : '🍕';
             const redFlagClass = item.hasBlocker ? 'has-blocker' : '';
-            
-            let blockerHtml = '';
-            if (item.hasBlocker) {
-                blockerHtml = `<div class="blocker-alert">⚠️ ${item.storeNotes}</div>`;
-            }
 
             const html = `
                 <div class="card status-blue ${redFlagClass}">
@@ -371,7 +366,6 @@
                     <div class="main-status">
                         ${item.dashboardStatus}
                     </div>
-                    ${blockerHtml}
                 </div>
             `;
             list.innerHTML += html;
@@ -442,4 +436,5 @@
 
 </body>
 </html>
+
 
