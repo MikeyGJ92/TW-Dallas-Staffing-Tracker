@@ -290,8 +290,16 @@
         });
 
     function populateFilters() {
-        const dos = [...new Set(rawData.onboarding.map(item => item.doName))].sort();
-        const stores = [...new Set(rawData.onboarding.map(item => item.store))].sort();
+        // Filter out headers from filter lists too
+        const dos = [...new Set(rawData.onboarding
+            .filter(item => item.store !== 'Store #' && item.doName !== 'DO')
+            .map(item => item.doName)
+        )].sort();
+
+        const stores = [...new Set(rawData.onboarding
+            .filter(item => item.store !== 'Store #')
+            .map(item => item.store)
+        )].sort();
 
         const doSelect = document.getElementById('doFilter');
         dos.forEach(doName => {
@@ -329,8 +337,9 @@
         const doVal = document.getElementById('doFilter').value;
         const storeVal = document.getElementById('storeFilter').value;
 
+       // IMPROVED FILTER: Remove header row
        const filtered = rawData.onboarding.filter(item => {
-            return item.name !== 'Name' && 
+            return item.store !== 'Store #' && 
                    (doVal === 'All' || item.doName === doVal) &&
                    (storeVal === 'All' || item.store === storeVal);
         });
@@ -376,8 +385,10 @@
         const doVal = document.getElementById('doFilter').value;
         const storeVal = document.getElementById('storeFilter').value;
 
+        // IMPROVED FILTER: Remove header row
         const filtered = rawData.interviews.filter(item => {
-            return (doVal === 'All' || item.doName === doVal) &&
+            return item.store !== 'Store #' &&
+                   (doVal === 'All' || item.doName === doVal) &&
                    (storeVal === 'All' || item.store === storeVal);
         });
 
@@ -430,7 +441,4 @@
 </script>
 
 </body>
-
 </html>
-
-
