@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,"> <!-- Fixes favicon 404 -->
     <title>Staffing Command Center</title>
     <style>
         /* --- FONT LOADING --- */
@@ -283,8 +284,6 @@
         filtered.forEach(item => {
             const icon = (item.position.includes('DE')) ? '🚗' : '🍕';
             const redFlagClass = item.hasBlocker ? 'has-blocker' : '';
-            
-            // Note: We removed the yellow box. Red border tells the story.
             
             const html = `
                 <div class="card status-blue ${redFlagClass}">
