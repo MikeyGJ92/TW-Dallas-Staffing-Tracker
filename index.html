@@ -23,22 +23,13 @@
         }
 
         :root {
-            /* Brand Colors */
             --brand-red: #ff0000;
-            --acc-red: #e70000;
-            --dark-red: #910000;
             --brand-blue: #0090e2;
-            --acc-blue: #0077bd;
-            --dark-blue: #005c91;
-            
-            /* Crust Palette */
             --crust-light: #faf2e9;
             --crust-med: #f0decc;
             --crust-dark: #c0a588;
             --crust-deep: #603913;
             --crust-burnt: #472b10;
-
-            /* UI Variables */
             --bg-color: var(--crust-light);
             --card-bg: #FFFFFF;
             --text-dark: var(--crust-burnt);
@@ -52,12 +43,11 @@
             margin: 0;
             padding: 0;
             color: var(--text-dark);
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Header --- */
+        /* Header */
         header {
-            background-color: var(--dark-blue);
+            background-color: #005c91;
             color: white;
             padding: 16px 20px;
             position: sticky;
@@ -69,31 +59,11 @@
             gap: 12px;
         }
 
-        .logo {
-            height: 40px;
-            width: auto;
-        }
+        .logo { height: 40px; width: auto; }
+        h1 { margin: 0; font-family: 'PizzaPress', serif; font-size: 24px; text-transform: uppercase; }
+        .subtitle { font-family: 'OneDotCd', sans-serif; font-size: 14px; opacity: 0.9; }
 
-        .header-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        h1 {
-            margin: 0;
-            font-family: 'PizzaPress', serif;
-            font-size: 24px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            font-family: 'OneDotCd', sans-serif;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* --- Controls --- */
+        /* Controls */
         .controls {
             padding: 16px 20px;
             background: white;
@@ -112,7 +82,6 @@
             font-family: 'OneDotCd-Bold', sans-serif;
             font-size: 16px;
             color: var(--text-dark);
-            outline: none;
         }
 
         .view-toggle {
@@ -135,20 +104,12 @@
             text-transform: uppercase;
         }
 
-        .view-btn.active {
-            background: white;
-            color: var(--brand-blue);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
+        .view-btn.active { background: white; color: var(--brand-blue); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
-        /* --- Main Content --- */
-        .container {
-            padding: 16px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* Main Content */
+        .container { padding: 16px; max-width: 800px; margin: 0 auto; }
 
-        /* --- Cards --- */
+        /* Cards */
         .card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -156,91 +117,58 @@
             margin-bottom: 12px;
             box-shadow: 0 4px 6px rgba(71, 43, 16, 0.05);
             border-left: 6px solid transparent;
-            transition: transform 0.1s ease;
         }
 
-        .card:active {
-            transform: scale(0.99);
-        }
-
-        /* Status Borders */
         .card.status-red { border-left-color: var(--brand-red); }
         .card.status-blue { border-left-color: var(--brand-blue); }
         .card.status-green { border-left-color: #28a745; }
         .card.status-gray { border-left-color: #999; }
         .card.has-blocker { border: 2px solid var(--brand-red); }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .name {
-            font-family: 'OneDotCd-Bold', sans-serif;
-            font-size: 20px;
-            color: var(--text-dark);
-        }
-
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .name { font-family: 'OneDotCd-Bold', sans-serif; font-size: 20px; color: var(--text-dark); }
         .position-badge {
-            font-family: 'OneDotCd-Bold', sans-serif;
-            font-size: 14px;
-            padding: 4px 10px;
-            border-radius: 12px;
-            background: var(--crust-light);
-            color: var(--dark-blue);
-            border: 1px solid var(--crust-med);
+            font-family: 'OneDotCd-Bold', sans-serif; font-size: 14px;
+            padding: 4px 10px; border-radius: 12px; background: var(--crust-light);
+            color: #005c91; border: 1px solid var(--crust-med);
         }
 
-        .meta-row {
-            display: flex;
-            justify-content: space-between;
-            font-family: 'OneDotCd', sans-serif;
-            font-size: 16px;
-            color: var(--text-light);
-            margin-bottom: 8px;
-        }
-
+        .meta-row { display: flex; justify-content: space-between; font-family: 'OneDotCd', sans-serif; font-size: 16px; color: var(--text-light); margin-bottom: 8px; }
+        
         .main-status {
-            font-family: 'OneDotCd-Bold', sans-serif;
-            font-size: 18px;
-            color: var(--brand-blue);
-            padding-top: 10px;
-            border-top: 1px solid var(--crust-med);
+            font-family: 'OneDotCd-Bold', sans-serif; font-size: 18px; color: var(--brand-blue);
+            padding-top: 10px; border-top: 1px solid var(--crust-med);
         }
 
-        .blocker-alert {
-            margin-top: 8px;
+        /* --- GM Appointment Box --- */
+        .gm-appt-box {
+            background-color: #e8f5e9;
+            border: 1px solid #28a745;
+            color: #1b5e20;
             padding: 10px;
-            background-color: #ffebee;
-            color: var(--brand-red);
-            font-family: 'OneDotCd-Bold', sans-serif;
-            font-size: 15px;
             border-radius: 8px;
+            margin-top: 8px;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid var(--brand-red);
+            flex-direction: column;
+            gap: 4px;
+        }
+        .gm-appt-label { font-size: 12px; text-transform: uppercase; opacity: 0.8; font-weight: bold; }
+        .gm-appt-time { font-family: 'OneDotCd-Bold', sans-serif; font-size: 18px; }
+
+        /* --- Notes Section --- */
+        .notes-section {
+            font-size: 15px; margin-top: 8px; color: var(--text-light);
+            background: #f9f9f9; padding: 6px; border-radius: 6px;
+            border-left: 3px solid #ccc;
         }
 
-        /* --- Loading State --- */
-        .loader {
-            text-align: center;
-            padding: 40px;
-            color: var(--crust-dark);
-            font-family: 'PizzaPress', serif;
-            font-size: 18px;
-        }
-
+        .loader { text-align: center; padding: 40px; color: var(--crust-dark); font-family: 'PizzaPress', serif; font-size: 18px; }
         .hidden { display: none; }
-
     </style>
 </head>
 <body>
 
 <header>
-    <!-- Logo Placeholder: Ensure New_Logo_v2.png is in the same folder -->
     <img src="New_Logo_v2.png" alt="Logo" class="logo" onerror="this.style.display='none'">
     <div class="header-text">
         <h1>Staffing Command</h1>
@@ -269,12 +197,11 @@
 </div>
 
 <script>
-    // REPLACE THIS URL IF YOU DEPLOYED A NEW VERSION
+    // DEPLOY URL (Make sure this is New Version!)
     const API_URL = "https://script.google.com/macros/s/AKfycbymntzmSriM_M4foUfbmKic3LNVvlRr2xs-Jzan6CLPiniV62pa4BFfF0aqZF4ABYJH/exec";
     
     let rawData = { onboarding: [], interviews: [] };
 
-    // Fetch Data on Load
     fetch(API_URL)
         .then(response => response.json())
         .then(data => {
@@ -290,60 +217,42 @@
         });
 
     function populateFilters() {
-        // combine DOs from both lists
+        // Collect DOs and Stores from BOTH lists
         const allDos = [
             ...rawData.onboarding.map(i => i.doName),
             ...rawData.interviews.map(i => i.doName)
         ];
-        // Filter out header text and empties
-        const dos = [...new Set(allDos.filter(d => d && d !== 'DO'))].sort();
+        // Filter empty, 'DO', and trim strings
+        const dos = [...new Set(allDos
+            .filter(d => d && d !== 'DO')
+            .map(d => d.toString().trim())
+        )].sort();
 
-        // combine Stores from both lists
         const allStores = [
             ...rawData.onboarding.map(i => i.store),
             ...rawData.interviews.map(i => i.store)
         ];
-        // Filter out header text and empties
-        const stores = [...new Set(allStores.filter(s => s && s !== 'Store #'))].sort();
+        const stores = [...new Set(allStores
+            .filter(s => s && s !== 'Store #')
+            .map(s => s.toString().trim())
+        )].sort();
 
         const doSelect = document.getElementById('doFilter');
-        // Clear existing options except 'All'
         doSelect.innerHTML = '<option value="All">All DOs</option>';
-        
         dos.forEach(doName => {
-            if(doName) {
-                let opt = document.createElement('option');
-                opt.value = doName;
-                opt.innerText = doName;
-                doSelect.appendChild(opt);
-            }
+            let opt = document.createElement('option');
+            opt.value = doName;
+            opt.innerText = doName;
+            doSelect.appendChild(opt);
         });
 
         const storeSelect = document.getElementById('storeFilter');
-        // Clear existing options except 'All'
         storeSelect.innerHTML = '<option value="All">All Stores</option>';
-        
         stores.forEach(store => {
-            if(store) {
-                let opt = document.createElement('option');
-                opt.value = store;
-                opt.innerText = store;
-                storeSelect.appendChild(opt);
-            }
-        });
-
-        // Re-attach listeners (safe to do because we didn't replace the select element itself, just options)
-        // Actually, listeners are on the element, so they persist. No need to re-add.
-    }
-
-        const storeSelect = document.getElementById('storeFilter');
-        stores.forEach(store => {
-            if(store) {
-                let opt = document.createElement('option');
-                opt.value = store;
-                opt.innerText = store;
-                storeSelect.appendChild(opt);
-            }
+            let opt = document.createElement('option');
+            opt.value = store;
+            opt.innerText = store;
+            storeSelect.appendChild(opt);
         });
 
         doSelect.addEventListener('change', refreshViews);
@@ -358,26 +267,25 @@
     function renderOnboarding() {
         const list = document.getElementById('onboardingList');
         list.innerHTML = '';
-
         const doVal = document.getElementById('doFilter').value;
         const storeVal = document.getElementById('storeFilter').value;
 
-       // IMPROVED FILTER: Remove header row
-       const filtered = rawData.onboarding.filter(item => {
+        const filtered = rawData.onboarding.filter(item => {
+            const iDo = item.doName ? item.doName.toString().trim() : '';
+            const iStore = item.store ? item.store.toString().trim() : '';
             return item.store !== 'Store #' && 
-                   (doVal === 'All' || item.doName === doVal) &&
-                   (storeVal === 'All' || item.store === storeVal);
+                   (doVal === 'All' || iDo === doVal) &&
+                   (storeVal === 'All' || iStore === storeVal);
         });
 
-        if(filtered.length === 0) {
-            list.innerHTML = '<div class="loader">No candidates active.</div>';
-            return;
-        }
+        if(filtered.length === 0) { list.innerHTML = '<div class="loader">No candidates active.</div>'; return; }
 
         filtered.forEach(item => {
             const icon = (item.position.includes('DE')) ? '🚗' : '🍕';
             const redFlagClass = item.hasBlocker ? 'has-blocker' : '';
-
+            
+            // Note: We removed the yellow box. Red border tells the story.
+            
             const html = `
                 <div class="card status-blue ${redFlagClass}">
                     <div class="card-header">
@@ -400,29 +308,42 @@
     function renderInterviews() {
         const list = document.getElementById('interviewList');
         list.innerHTML = '';
-
         const doVal = document.getElementById('doFilter').value;
         const storeVal = document.getElementById('storeFilter').value;
 
-        // IMPROVED FILTER: Remove header row
         const filtered = rawData.interviews.filter(item => {
+            const iDo = item.doName ? item.doName.toString().trim() : '';
+            const iStore = item.store ? item.store.toString().trim() : '';
             return item.store !== 'Store #' &&
-                   (doVal === 'All' || item.doName === doVal) &&
-                   (storeVal === 'All' || item.store === storeVal);
+                   (doVal === 'All' || iDo === doVal) &&
+                   (storeVal === 'All' || iStore === storeVal);
         });
 
-        if(filtered.length === 0) {
-            list.innerHTML = '<div class="loader">No interviews scheduled.</div>';
-            return;
-        }
+        if(filtered.length === 0) { list.innerHTML = '<div class="loader">No interviews scheduled.</div>'; return; }
 
         filtered.forEach(item => {
             const icon = (item.position.includes('DE')) ? '🚗' : '🍕';
             
             let statusColor = 'status-blue';
             if(item.status.includes('No Show') || item.status.includes('Canceled') || item.status.includes('Pass')) statusColor = 'status-red';
-            if(item.status.includes('2nd Interview') || item.status.includes('Hired')) statusColor = 'status-green';
+            if(item.status.includes('2nd Interview') || item.status.includes('Hired') || item.status.includes('Offered')) statusColor = 'status-green';
             if(item.status.includes('Reschedule')) statusColor = 'status-gray';
+
+            // GM Appointment Logic
+            let gmHtml = '';
+            if (item.gmDate && item.gmDate !== '') {
+                gmHtml = `
+                <div class="gm-appt-box">
+                    <div class="gm-appt-label">GM Interview Scheduled</div>
+                    <div class="gm-appt-time">📅 ${item.gmDate} @ ${item.gmTime}</div>
+                </div>`;
+            }
+
+            // Notes Logic (Ensure trimmed)
+            let notesHtml = '';
+            if (item.notes && item.notes.trim() !== '') {
+                notesHtml = `<div class="notes-section">📝 ${item.notes}</div>`;
+            }
 
             const html = `
                 <div class="card ${statusColor}">
@@ -437,7 +358,8 @@
                     <div class="main-status">
                         Result: ${item.status}
                     </div>
-                    ${item.notes ? `<div style="font-size:16px; margin-top:8px; color:var(--text-light);">📝 ${item.notes}</div>` : ''}
+                    ${gmHtml}
+                    ${notesHtml}
                 </div>
             `;
             list.innerHTML += html;
@@ -461,7 +383,3 @@
 
 </body>
 </html>
-
-
-
-
