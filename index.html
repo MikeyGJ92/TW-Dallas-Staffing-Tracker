@@ -13,6 +13,7 @@
         :root {
             --brand-red: #ff0000;
             --brand-blue: #0090e2;
+            --brand-orange: #ff8f00; /* New Orange */
             --crust-light: #faf2e9;
             --crust-med: #f0decc;
             --crust-dark: #c0a588;
@@ -39,9 +40,12 @@
 
         .container { padding: 16px; max-width: 800px; margin: 0 auto; }
         .card { background: var(--card-bg); border-radius: var(--border-radius); padding: 16px; margin-bottom: 12px; box-shadow: 0 4px 6px rgba(71, 43, 16, 0.05); border-left: 6px solid transparent; }
+        
+        /* Status Colors */
         .card.status-red { border-left-color: var(--brand-red); }
         .card.status-blue { border-left-color: var(--brand-blue); }
         .card.status-green { border-left-color: #28a745; }
+        .card.status-orange { border-left-color: var(--brand-orange); } /* New */
         .card.status-gray { border-left-color: #999; }
         .card.has-blocker { border: 2px solid var(--brand-red); }
 
@@ -170,23 +174,24 @@
 
         filtered.forEach(item => {
             const icon = (item.position.includes('DE')) ? '🚗' : '🍕';
+            
+            // --- COLOR LOGIC ---
             let statusColor = 'status-blue';
             if(item.status.includes('No Show') || item.status.includes('Canceled') || item.status.includes('Pass')) statusColor = 'status-red';
-            if(item.status.includes('2nd Interview') || item.status.includes('Hired') || item.status.includes('Offered')) statusColor = 'status-green';
+            if(item.status.includes('2nd Interview') || item.status.includes('Hired')) statusColor = 'status-green';
+            if(item.status.includes('Offered') || item.status.includes('TBD')) statusColor = 'status-orange'; // Pending/Offered
             if(item.status.includes('Reschedule')) statusColor = 'status-gray';
 
-            // --- DATE COMPARISON LOGIC ---
+            // --- DATE LOGIC ---
             let showGmBox = false;
             if (item.gmDate && item.gmDate !== '') {
                 try {
-                    // Combine Date and Time strings (e.g., "1/9/2026 3:00 PM")
                     const dateStr = item.gmDate + (item.gmTime ? ' ' + item.gmTime : '');
                     const apptDate = new Date(dateStr);
                     const now = new Date();
-                    // If parse failed, default to show. If valid, check if Future.
-                    if (isNaN(apptDate.getTime())) { showGmBox = true; } // Safety fallback
-                    else { showGmBox = apptDate > now; } // Only show if future
-                } catch(e) { showGmBox = true; }
+                    // Fallback: If invalid date, assume it's NOT a date we can track, so don't show box.
+                    if (!isNaN(apptDate.getTime())) { showGmBox = apptDate > now; }
+                } catch(e) { showGmBox = false; }
             }
 
             let gmHtml = '';
